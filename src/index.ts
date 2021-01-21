@@ -1,12 +1,10 @@
-import _ from 'lodash';
-
 export type Matrix = number[][];
 
 export const haveSameSize = (first: Matrix, second: Matrix): boolean =>
 	(first.length === second.length) && (first[0].length === second[0].length);
 
 export const add = (first: Matrix, second: Matrix): Matrix =>
-	first.map((row, i) => row.map((num, j) => _.add(num, second[i][j])));
+	first.map((row, i) => row.map((num, j) => num + second[i][j]));
 
 export const sum = (...matrices: Matrix[]): Matrix => matrices.reduce((total, current) => add(total, current));
 
@@ -51,4 +49,4 @@ const matrix2: Matrix = [
 	[1, -1, 1]
 ];
 
-console.log(determinant(matrix1));
+console.log(toString(inverse(matrix1) as Matrix));
