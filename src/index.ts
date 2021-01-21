@@ -16,6 +16,10 @@ export const transpose = (matrix: Matrix): Matrix => matrix.map((row, i, array) 
 
 export const negative = (matrix: Matrix): Matrix => matrix.map(row => row.map(num => -num));
 
+export const increase = (matrix: Matrix, times: number) => matrix.map(row => row.map(num => num * times));
+
+export const multiply = (...matrices: Matrix[]): Matrix =>
+
 const dropIndex = <T>(indexToDrop: number) => <T>(value: T, index: number): boolean => index !== indexToDrop;
 
 export const minor = (
@@ -32,6 +36,10 @@ export const adjunct = (
 	crossRow: number,
 	crossCol: number
 ): number => (-1) ** (crossCol + crossRow + 2) * determinant(minor(matrix, crossRow, crossCol));
+
+// export const inverse = (matrix: Matrix): Matrix | null => determinant(matrix) == 0 ? null : matrix.map(
+// 	(row: number[], i) => row.map((num: number, j) => )
+// );
 
 const matrix1: Matrix = [
 	[1, 2, -4],
