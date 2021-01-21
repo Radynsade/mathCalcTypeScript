@@ -6,6 +6,8 @@ export const haveSameSize = (first: Matrix, second: Matrix): boolean =>
 export const add = (first: Matrix, second: Matrix): Matrix =>
 	first.map((row, i) => row.map((num, j) => num + second[i][j]));
 
+export const create = (rows: number, columns: number): Matrix => new Array(rows).fill(new Array(columns).fill(0));
+
 export const sum = (...matrices: Matrix[]): Matrix => matrices.reduce((total, current) => add(total, current));
 
 export const toString = (matrix: Matrix): string => matrix.map(row => row.join('\t')).join('\n');
@@ -15,6 +17,8 @@ export const transpose = (matrix: Matrix): Matrix => matrix.map((row, i, array) 
 export const negative = (matrix: Matrix): Matrix => matrix.map(row => row.map(num => -num));
 
 export const increase = (matrix: Matrix, times: number) => matrix.map(row => row.map(num => num * times));
+
+export const multiply = (first: Matrix, second: Matrix): Matrix => create(first.length, second[0].length)
 
 const dropIndex = <T>(indexToDrop: number) => <T>(value: T, index: number): boolean => index !== indexToDrop;
 
@@ -49,4 +53,4 @@ const matrix2: Matrix = [
 	[1, -1, 1]
 ];
 
-console.log(toString(inverse(matrix1) as Matrix));
+console.log(toString(create(4, 4)));
