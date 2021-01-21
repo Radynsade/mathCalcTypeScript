@@ -24,6 +24,15 @@ export const minor = (
 	colToDrop: number
 ): Matrix => matrix.filter(dropIndex(rowToDrop)).map(row => row.filter(dropIndex(colToDrop)));
 
+export const determinant = (matrix: Matrix): number => matrix.length === 1 && matrix[0].length === 1
+	? matrix[0][0] : matrix.reduce((total: number, row, i) => total + row[0] * adjunct(matrix, i, 0), 0);
+
+export const adjunct = (
+	matrix: Matrix,
+	crossRow: number,
+	crossCol: number
+): number => (-1) ^ _.sum([crossRow, crossCol, 2]) * determinant(minor(matrix, crossRow, crossCol));
+
 const matrix1: Matrix = [
 	[1, 2, -4],
 	[0, -9, 2],
