@@ -31,7 +31,7 @@ export const adjunct = (
 	matrix: Matrix,
 	crossRow: number,
 	crossCol: number
-): number => (-1) ^ _.sum([crossRow, crossCol, 2]) * determinant(minor(matrix, crossRow, crossCol));
+): number => (-1) ** (crossCol + crossRow + 2) * determinant(minor(matrix, crossRow, crossCol));
 
 const matrix1: Matrix = [
 	[1, 2, -4],
@@ -45,4 +45,4 @@ const matrix2: Matrix = [
 	[1, -1, 1]
 ];
 
-console.log(toString(minor(matrix1, 1, 1)));
+console.log(determinant(matrix1));
